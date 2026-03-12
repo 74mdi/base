@@ -1,0 +1,458 @@
+@import 'tailwindcss';
+@source "../mdx-components.tsx";
+@source "./**/*.{ts,tsx,mdx}";
+@source "../components/**/*.{ts,tsx}";
+/* @import "./twoslash.css"; */
+
+@layer utilities {
+  .font-thin {
+    font-variation-settings: 'wght' 100, var(--sans-variation);
+  }
+  .font-extralight {
+    font-variation-settings: 'wght' 200, var(--sans-variation);
+  }
+  .font-light {
+    font-variation-settings: 'wght' 300, var(--sans-variation);
+  }
+  .font-normal {
+    font-variation-settings: 'wght' 440, var(--sans-variation);
+  }
+  .font-medium {
+    font-variation-settings: 'wght' 500, var(--sans-variation);
+  }
+  .font-semibold {
+    font-variation-settings: 'wght' 600, var(--sans-variation);
+  }
+  .font-bold {
+    font-variation-settings: 'wght' 640, var(--sans-variation);
+  }
+  .font-extrabold {
+    font-variation-settings: 'wght' 700, var(--sans-variation);
+  }
+  .font-black {
+    font-variation-settings: 'wght' 800, var(--sans-variation);
+  }
+}
+
+@theme {
+  --color-rurikon-50: #f5f5f5;
+  --color-rurikon-100: #e5e5e5;
+  --color-rurikon-200: #d4d4d4;
+  --color-rurikon-300: #a3a3a3;
+  --color-rurikon-400: #737373;
+  --color-rurikon-500: #404040;
+  --color-rurikon-600: #262626;
+  --color-rurikon-700: #171717;
+  --color-rurikon-800: #0a0a0a;
+  --color-rurikon-900: #000000;
+  --color-rurikon-950: #000000;
+
+  --color-rurikon-border: #00000026;
+
+  --font-sans: var(--sans), -apple-system, ui-sans-serif, system-ui,
+    sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',
+    'Noto Color Emoji';
+  --font-serif: var(--serif), ui-serif, Georgia, Cambria,
+    'Times New Roman', Times, serif;
+  --font-mono: var(--mono), ui-monospace, SFMono-Regular, Menlo, Monaco,
+    Consolas, 'Liberation Mono', 'Courier New', monospace;
+  --font-zh: var(--zh), var(--sans), -apple-system, ui-sans-serif, system-ui,
+    'PingFang SC', 'Hiragino Sans GB', 'Source Han Sans CN', sans-serif;
+
+  --breakpoint-text: 1220px;
+  --breakpoint-mobile: 420px;
+}
+
+:root {
+  color-scheme: light;
+  --sans: -apple-system, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell,
+    'Helvetica Neue', Arial, sans-serif;
+  --serif: ui-serif, Georgia, Cambria, 'Times New Roman', Times, serif;
+  --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+    'Liberation Mono', 'Courier New', monospace;
+  --background: #ffffff;
+  --background-rgb: 255 255 255;
+  --selection-background: #0000001a;
+  --selection-text: #000000;
+  --surface-raised: #ffffffee;
+  --surface-soft: #f5f5f5;
+  --surface-overlay: #fffffff2;
+  --frame-background: #fff;
+  --overlay-shadow: 0 12px 28px rgba(0, 0, 0, 0.14);
+  --overlay-shadow-strong: 0 14px 35px rgba(0, 0, 0, 0.18);
+  --accent-solid: #000000;
+  --accent-solid-hover: #171717;
+  --accent-solid-text: #fff;
+  --theme-shiki-token-comment: hsl(0deg 0% 45%);
+  --theme-shiki-token-punctuation: hsl(0deg 0% 38%);
+  --theme-shiki-token-keyword: hsl(0deg 0% 20%);
+  --theme-shiki-token-function: hsl(0deg 0% 12%);
+  --theme-shiki-token-string: hsl(0deg 0% 28%);
+  --theme-shiki-token-string-expression: hsl(0deg 0% 28%);
+  --theme-shiki-token-constant: hsl(0deg 0% 18%);
+  --theme-shiki-token-link: hsl(0deg 0% 20%);
+  --theme-shiki-token-parameter: hsl(0deg 0% 22%);
+  --theme-shiki-foreground-inline: hsl(0deg 0% 18%);
+  --theme-shiki-foreground-block: hsl(0deg 0% 22%);
+  --code-highlight-line: #0000000f;
+  --code-highlight-word: #00000014;
+}
+
+:root {
+  --sans-variation: 'opsz' 32;
+  --font-features: 'cpsp' 1, 'cv01', 'cv03', 'cv04', 'calt', 'ss03',
+    'liga', 'ordn';
+}
+
+:root[data-theme-mode='dark'] {
+  color-scheme: dark;
+  --background: #000000;
+  --background-rgb: 0 0 0;
+  --color-rurikon-50: #0f0f0f;
+  --color-rurikon-100: #1a1a1a;
+  --color-rurikon-200: #262626;
+  --color-rurikon-300: #5f5f5f;
+  --color-rurikon-400: #8c8c8c;
+  --color-rurikon-500: #c7c7c7;
+  --color-rurikon-600: #dddddd;
+  --color-rurikon-700: #ededed;
+  --color-rurikon-800: #f8f8f8;
+  --color-rurikon-900: #ffffff;
+  --color-rurikon-border: #ffffff38;
+  --selection-background: #ffffff2b;
+  --selection-text: #ffffff;
+  --surface-raised: #0a0a0af0;
+  --surface-soft: #111111;
+  --surface-overlay: #0a0a0af5;
+  --frame-background: #101010;
+  --overlay-shadow: 0 14px 34px rgba(0, 0, 0, 0.55);
+  --overlay-shadow-strong: 0 18px 44px rgba(0, 0, 0, 0.6);
+  --accent-solid: #ffffff;
+  --accent-solid-hover: #f0f0f0;
+  --accent-solid-text: #000000;
+  --theme-shiki-token-comment: hsl(0deg 0% 62%);
+  --theme-shiki-token-punctuation: hsl(0deg 0% 74%);
+  --theme-shiki-token-keyword: hsl(0deg 0% 94%);
+  --theme-shiki-token-function: hsl(0deg 0% 98%);
+  --theme-shiki-token-string: hsl(0deg 0% 88%);
+  --theme-shiki-token-string-expression: hsl(0deg 0% 88%);
+  --theme-shiki-token-constant: hsl(0deg 0% 94%);
+  --theme-shiki-token-link: hsl(0deg 0% 92%);
+  --theme-shiki-token-parameter: hsl(0deg 0% 90%);
+  --theme-shiki-foreground-inline: hsl(0deg 0% 90%);
+  --theme-shiki-foreground-block: hsl(0deg 0% 88%);
+  --code-highlight-line: #ffffff1f;
+  --code-highlight-word: #ffffff26;
+}
+
+body {
+  font-synthesis: none;
+  font-family: var(--sans), system-ui, -apple-system, BlinkMacSystemFont,
+    'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue',
+    sans-serif;
+  font-feature-settings: var(--font-features);
+  font-variation-settings: 'wght' 440, var(--sans-variation);
+  font-variant: common-ligatures contextual;
+  text-decoration-skip-ink: auto;
+  text-spacing-trim: space-first;
+  font-optical-sizing: auto;
+  letter-spacing: 0.0085em;
+  word-spacing: -0.04em;
+  background-color: var(--background);
+  text-rendering: geometricPrecision;
+  text-autospace: normal;
+
+  /* Debugger */
+  /* background: linear-gradient(to bottom, #ccc, var(--background) 1px);
+  background-size: 100% 1.75rem; */
+
+  -webkit-tap-highlight-color: transparent;
+}
+
+i,
+em,
+blockquote,
+nav,
+.sidenote {
+  font-family: var(--serif), Baskerville, Georgia, Cambria, 'Times New Roman',
+    Times, serif;
+  font-style: initial;
+  font-optical-sizing: auto;
+  font-variation-settings: 'wght' 480, var(--sans-variation);
+  font-weight: 400;
+  font-variant-ligatures: contextual;
+  letter-spacing: -0.006em;
+}
+
+del {
+  text-decoration-thickness: 1px;
+}
+
+ins {
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.15em;
+}
+
+mark {
+  background: var(--color-rurikon-200);
+  color: var(--color-rurikon-800);
+  padding: 0 0.15em;
+}
+
+article h1:has(+ h2),
+article h2:has(+ h3),
+article h3:has(+ h4),
+article h4:has(+ h5),
+article h5:has(+ h6) {
+  margin-bottom: 0.45rem !important;
+}
+
+article h1 + h2,
+article h2 + h3,
+article h3 + h4,
+article h4 + h5,
+article h5 + h6 {
+  margin-top: 0.45rem !important;
+}
+
+blockquote {
+  box-shadow: 1px 0 0 var(--color-rurikon-500) inset;
+}
+@media screen and (max-width: 420px) {
+  blockquote {
+    /* Make it wider on mobile with a lighter color */
+    box-shadow: 2px 0 0 var(--color-rurikon-300) inset;
+  }
+}
+
+blockquote + blockquote {
+  display: flow-root;
+}
+
+main {
+  hanging-punctuation: first allow-end last;
+  hyphens: auto;
+  hyphenate-limit-chars: 10 6 6;
+}
+
+pre {
+  background-color: var(--surface-soft);
+  /* contain: paint; */
+  /* margin: 1.75rem 0; */
+  overflow-x: auto;
+  /* border-radius: 0.75rem; */
+  /* background-color: var(--color-rurikon-50); */
+  padding: 0.875rem 1.25rem;
+  -webkit-font-smoothing: auto;
+}
+
+pre code {
+  display: inline-block;
+  padding: 0;
+  line-height: 1.45rem;
+  min-width: 100%;
+  width: max-content;
+  white-space: pre;
+  word-break: normal;
+}
+
+code {
+  font-family: var(--mono), ui-monospace, SFMono-Regular, Menlo, Monaco,
+    Consolas, 'Liberation Mono', 'Courier New', monospace;
+  word-spacing: -0.15em;
+
+  /* background: var(--color-rurikon-50); */
+  padding: 0.15em 0.2em;
+  /* margin: 0 1px; */
+  /* border-radius: 2px; */
+  /* -webkit-box-decoration-break: clone;
+  box-decoration-break: clone; */
+
+  /* color: hsl(215deg 32% 37%); */
+  --shiki-token-comment: var(--theme-shiki-token-comment);
+  --shiki-token-punctuation: var(--theme-shiki-token-punctuation);
+  --shiki-token-keyword: var(--theme-shiki-token-keyword);
+  --shiki-token-function: var(--theme-shiki-token-function);
+  --shiki-token-string: var(--theme-shiki-token-string);
+  --shiki-token-string-expression: var(--theme-shiki-token-string-expression);
+  --shiki-token-constant: var(--theme-shiki-token-constant);
+  --shiki-token-link: var(--theme-shiki-token-link);
+  --shiki-token-parameter: var(--theme-shiki-token-parameter);
+  --shiki-foreground: var(--theme-shiki-foreground-inline);
+}
+
+pre {
+  --shiki-foreground: var(--theme-shiki-foreground-block);
+  --shiki-background: transparent;
+}
+pre code {
+  --shiki-foreground: var(--theme-shiki-foreground-block);
+}
+
+code {
+  /* Shiki transformers */
+  .line.highlighted {
+    background-color: var(--code-highlight-line);
+    margin: 0 -1.25rem;
+    padding: 0 1.25rem;
+    width: calc(100% + 2.5rem);
+    display: inline-block;
+  }
+  .highlighted-word {
+    background-color: var(--code-highlight-word);
+    padding: 2px;
+    margin: -2px;
+  }
+}
+
+code span {
+  transition: color 0.2s;
+}
+
+article {
+  figure {
+    margin-top: 1.75rem;
+    line-height: 0;
+  }
+  .sidenote-content {
+    img,
+    video,
+    pre {
+      margin: 0;
+    }
+  }
+  .no-padding {
+    --frame-padding: 0;
+  }
+  .framed > img, .framed > figure > span:first-child {
+    padding: var(--frame-padding, 0.875rem);
+    background: var(--frame-background);
+    border: 1px solid var(--color-rurikon-border);
+  }
+  iframe {
+    width: 100%;
+    border: 1px solid var(--color-rurikon-border);
+    background-color: var(--frame-background);
+  }
+  details {
+    margin-top: 1.75rem;
+    padding: 0.5rem 0;
+    border-top: 1px solid var(--color-rurikon-border);
+    border-bottom: 1px solid var(--color-rurikon-border);
+  }
+  details summary {
+    font-variation-settings: 'wght' 600, var(--sans-variation);
+    margin-bottom: 0.25rem;
+  }
+  details summary::marker {
+    content: '';
+  }
+  details p:first-of-type {
+    margin-top: 0;
+  }
+}
+
+.content-fade-out {
+  background: linear-gradient(
+    180deg,
+    rgb(var(--background-rgb) / 1) 0%,
+    rgb(var(--background-rgb) / 0.63) 14%,
+    rgb(var(--background-rgb) / 0.36) 29%,
+    rgb(var(--background-rgb) / 0.19) 43%,
+    rgb(var(--background-rgb) / 0.08) 57%,
+    rgb(var(--background-rgb) / 0.02) 71%,
+    rgb(var(--background-rgb) / 0) 86%,
+    rgb(var(--background-rgb) / 0) 100%
+  );
+}
+
+.sidebar-divider {
+  mix-blend-mode: multiply;
+}
+
+:root[data-theme-mode='dark'] .sidebar-divider {
+  mix-blend-mode: normal;
+  opacity: 0.7;
+}
+
+*::selection {
+  background: var(--selection-background);
+  color: var(--selection-text);
+}
+
+.dot-leaders {
+  text-align: end;
+  height: 1em;
+  overflow: hidden;
+  word-wrap: break-word;
+  letter-spacing: 6px;
+}
+
+.dot-leaders::after {
+  content: '······································································';
+}
+
+[data-route-transition='enter'] {
+  animation: route-blur-enter 560ms cubic-bezier(0.16, 0.84, 0.22, 1);
+  will-change: opacity, transform, filter;
+}
+
+@keyframes route-blur-enter {
+  0% {
+    opacity: 0;
+    transform: translateY(8px);
+    filter: blur(8px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+.music-title-morph {
+  animation: music-title-morph 620ms cubic-bezier(0.18, 0.88, 0.22, 1);
+  will-change: opacity, transform, filter;
+}
+
+@keyframes music-title-morph {
+  0% {
+    opacity: 0;
+    transform: translateY(4px) scale(0.99);
+    filter: blur(6px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-route-transition='enter'] {
+    animation: none;
+    opacity: 1;
+    transform: none;
+    filter: none;
+  }
+
+  .music-title-morph {
+    animation: none;
+    opacity: 1;
+    transform: none;
+    filter: none;
+  }
+}
+
+div[data-codice-editor] {
+  --codice-font-family: var(--mono), ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace !important;
+  --sh-class: var(--theme-shiki-token-constant);
+  --sh-sign: var(--theme-shiki-token-punctuation);
+  --sh-keyword: var(--theme-shiki-token-keyword);
+  --sh-property: var(--theme-shiki-token-function);
+  code {
+    white-space: pre-wrap;
+    word-spacing: 0 !important;
+    font-feature-settings: var(--font-features);    
+  }
+}
